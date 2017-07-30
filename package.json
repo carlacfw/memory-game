@@ -1,8 +1,8 @@
 {
-  "name": "taxonomic-routing",
+  "name": "js-memory-game",
   "version": "0.1.0",
-  "description": "Using React Router to navigate the taxonomic rank",
-  "repository": "https://github.com/dev-academy-challenges/taxonomic-routing.git",
+  "description": "Using React Router to navigate the symbols",
+  "repository": "https://github.com/carlacfw/memory-game",
   "main": "server/index.js",
   "scripts": {
     "start": "nodemon --watch server server/index & webpack --watch",
@@ -15,7 +15,7 @@
       "react"
     ]
   },
-  "author": "EDA",
+  "author": "carla",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.21.0",
