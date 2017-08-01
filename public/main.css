@@ -1,6 +1,10 @@
 .board {
   display: flex;
   flex-wrap: wrap;
+  border-style: solid;
+  width: 690px;
+  height: 900px;
+
   }
 
 .card {
@@ -8,5 +12,10 @@
   height: 200px;
   border-radius: 10px;
   border: black;
+  border-style: solid;
+  margin: 3px;
+  text-align: center;
+  font-size: 30px;
+  
 
 }
