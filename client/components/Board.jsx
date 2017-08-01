@@ -24,7 +24,7 @@ export default function (props) {
   return (
     <div className="board">
       {cards.map((card) => {
-        return (<Card data={card} />)
+        return (<Card data={card}/>)
       })}
 
     </div>
