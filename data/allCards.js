@@ -60,7 +60,7 @@ const allCards = {
       matchId: 6,
       text: "use it around a word to create a string"
     }
-  ]
+  ]}
 
 
 export default allCards
