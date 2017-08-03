@@ -29,19 +29,22 @@ export default class Board extends React.Component {
   }
   checkTwoTemporaryCards(tempRevealed) {
     let {revealed} = this.state
-    if (tempRevealed.length == 2) {
-      if (this.checkMatch(tempRevealed[0], tempRevealed[1])) {
-        revealed.push(tempRevealed[0])
-        revealed.push(tempRevealed[1])
-        this.setState({revealed, canClick: true})
-      }
-      tempRevealed = []
-      this.setState({canClick: false})
-      setTimeout(() => {
-        console.log("timeout");
-        this.setState({tempRevealed, canClick: true})
-      }, 3000 )
-    } else this.setState({tempRevealed, canClick: true})
+    if (tempRevealed.length != 2) {
+      this.setState({tempRevealed, canClick: true})
+      return;
+    }
+
+    if (this.checkMatch(tempRevealed[0], tempRevealed[1])) {
+      revealed.push(tempRevealed[0])
+      revealed.push(tempRevealed[1])
+      this.setState({revealed, canClick: true})
+    }
+    tempRevealed = []
+    this.setState({canClick: false})
+    setTimeout(() => {
+      console.log("timeout");
+      this.setState({tempRevealed, canClick: true})
+    }, 2000 )
 
   }
   clickCard(card) {

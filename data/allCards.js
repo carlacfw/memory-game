@@ -55,7 +55,7 @@ const allCards = {
     {
       id: 11,
       matchId: 6,
-      text: "''"
+      text: "' '"
     },
     {
       id: 12,
