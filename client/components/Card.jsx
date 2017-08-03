@@ -3,7 +3,6 @@ import {HashRouter as Router, Route} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 
 export default function Card ({isRevealed, card, clickCard}) {
-  console.log({isRevealed,card});
   return (
     <div className="card" onClick={() => clickCard(card)}>
       {isRevealed && <p>{card.text}</p>}

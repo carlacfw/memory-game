@@ -7,19 +7,16 @@ import Board from './Board'
 const App = () => {
   return (
     <div className='home-page'>
-    <h1>JS Memory Game</h1>
-    <Router>
-      <div className='routes'>
-        <Route exact path='/' component={Rules}/>
-        <Route exact path='/board' component={Board}/>
+      <h1>JS Memory Game</h1>
 
 
-      </div>
-
-    </Router>
-
-
-
+      <Router>
+        <div className='routes'>
+                  <Link to='/'>Home</Link>
+          <Route exact path='/' component={Rules}/>
+          <Route exact path='/board' component={Board}/>
+        </div>
+      </Router>
     </div>
   )
 }
