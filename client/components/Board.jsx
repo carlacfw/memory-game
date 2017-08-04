@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom'
 
 import allCards from '../../data/allCards'
 import Card from './Card'
+import Clock from './Clock'
+import Win from './Win'
 
 export default class Board extends React.Component {
   constructor(props) {
@@ -12,8 +14,37 @@ export default class Board extends React.Component {
       cards: this.shuffle([...allCards.cards]),
       revealed: [],
       tempRevealed: [],
-      canClick: true
+      canClick: true,
+      elapsedTime: 0,
+      maxTime: 3,
+      gameStarted: false,
+      gameEnded: false,
+      matches: 0,
+      misses: 0,
+      gameStats: {}
     }
+  }
+  checkWin(revealed) {
+    let allMatches = revealed.length == this.state.cards.length
+    let outOfTime = this.state.elapsedTime >= this.state.maxTime
+    if (allMatches || outOfTime) {
+      this.setState({gameEnded: true})
+      // let {misses, matches, elapsedTime} = this.state
+      // let isWin = allMatches
+      // let gameStats = {isWin, misses, matches, elapsedTime}
+      // console.log({gameStats});
+      // this.setState({gameStats})
+      //this part is not working
+    }
+  }
+  startTimer() {
+    setInterval(()=>{
+      if (!this.state.gameEnded) {
+
+        if (this.state.elapsedTime >= this.state.maxTime ) this.setState({canClick: false, gameEnded: true})
+        else this.setState({elapsedTime: this.state.elapsedTime +1, gameStarted: true})
+      }
+    }, 1000)
   }
   shuffle(input) {
     for (var i = input.length-1; i >=0; i--) {
@@ -28,28 +59,30 @@ export default class Board extends React.Component {
     return card1.matchId == card2.matchId
   }
   checkTwoTemporaryCards(tempRevealed) {
-    let {revealed} = this.state
+    let {revealed, matches, misses} = this.state
     if (tempRevealed.length != 2) {
       this.setState({tempRevealed, canClick: true})
       return;
     }
-
     if (this.checkMatch(tempRevealed[0], tempRevealed[1])) {
       revealed.push(tempRevealed[0])
       revealed.push(tempRevealed[1])
-      this.setState({revealed, canClick: true})
-    }
-    tempRevealed = []
-    this.setState({canClick: false})
-    setTimeout(() => {
-      console.log("timeout");
-      this.setState({tempRevealed, canClick: true})
-    }, 2000 )
+      this.checkWin(revealed)
+      this.setState({revealed, tempRevealed: [], canClick: true, matches: matches +1})
 
+    } else {
+      this.setState({canClick: false})
+      setTimeout(() => {
+        console.log("timeout");
+        this.checkWin(revealed)
+        this.setState({tempRevealed: [], canClick: true, misses: misses +1})
+      }, 2000 )
+    }
   }
   clickCard(card) {
-    let {tempRevealed, canClick} = this.state
-    if (!canClick) return
+    let {tempRevealed, canClick, revealed,gameStarted} = this.state
+    if (!gameStarted) this.startTimer()
+    if (!canClick || tempRevealed.indexOf(card) != -1 || revealed.indexOf(card) != -1) return
     tempRevealed.push(card)
     this.checkTwoTemporaryCards(tempRevealed)
   }
@@ -58,42 +91,31 @@ export default class Board extends React.Component {
     return (revealed.indexOf(card) != -1 || tempRevealed.indexOf(card) != -1)
   }
   render() {
-    let {cards, revealed, tempRevealed} = this.state
-    console.log({tempRevealed, revealed});
+    let {cards, revealed, tempRevealed, elapsedTime, canClick, matches, misses, gameEnded, gameStats}  = this.state
+    // console.log({tempRevealed, revealed});
+    console.log(gameEnded);
+    console.log({gameStats});
     return (
-      <div className="board">
-        {cards.map((card, i) => {
-          let isRevealed = this.checkRevealed(card)
-          return (<Card key={i} isRevealed={isRevealed} card={card} clickCard={this.clickCard.bind(this)}/>)
-        })}
+      <div>
+        {!gameEnded &&
+          <div>
+            <Clock elapsedTime={elapsedTime}/>
+            <h4>{!canClick ? "Hold On" : "Go!"}</h4>
+            <h1>matches: {matches} misses: {misses}</h1>
+          </div>
+        }
+        {!gameEnded &&
+          <div className="board">
+            {cards.map((card, i) => {
+              let isRevealed = this.checkRevealed(card)
+              return (<Card key={i} isRevealed={isRevealed} canClick={canClick} card={card} clickCard={this.clickCard.bind(this)}/>)
+            })}
 
+          </div>
+        }
+        {gameEnded == true && <h1>Game over </h1>}
+        {gameEnded && <Win gameStats={gameStats} />}
       </div>
-
     )
   }
 }
-
-// export default function (props) {
-//   function shuffle(input) {
-//   for (var i = input.length-1; i >=0; i--) {
-//     var randomIndex = Math.floor(Math.random()*(i+1))
-//     var itemAtIndex = input[randomIndex]
-//
-//     input[randomIndex] = input[i]
-//     input[i] = itemAtIndex
-//   }
-//   return input
-// }
-
-//
-//   let cards = shuffle([...allCards.cards])
-//   console.log(cards)
-//   return (
-//     <div className="board">
-//       {cards.map((card) => {
-//         return (<Card data={card}/>)
-//       })}
-//
-//     </div>
-//   )
-// }

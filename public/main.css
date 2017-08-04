@@ -4,19 +4,26 @@
   border-style: solid;
   width: 890px;
   height: 680px;
+  align-items: center;
 
   }
 
 .card {
   width: 200px;
   height: 200px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: black;
   border-style: solid;
-  margin-left: 10px;
+  /*margin-left: 10px;*/
   text-align: center;
   font-size: 30px;
   align-self: center;
 
 
+}
+.clock {
+  font-size: 50px;
+}
+.home-page {
+  align-items: center;
 }
