@@ -16,7 +16,7 @@ export default class Board extends React.Component {
       tempRevealed: [],
       canClick: true,
       elapsedTime: 0,
-      maxTime: 3,
+      maxTime: 60,
       gameStarted: false,
       gameEnded: false,
       matches: 0,
@@ -29,12 +29,12 @@ export default class Board extends React.Component {
     let outOfTime = this.state.elapsedTime >= this.state.maxTime
     if (allMatches || outOfTime) {
       this.setState({gameEnded: true})
-      // let {misses, matches, elapsedTime} = this.state
-      // let isWin = allMatches
-      // let gameStats = {isWin, misses, matches, elapsedTime}
-      // console.log({gameStats});
-      // this.setState({gameStats})
-      //this part is not working
+      let {misses, matches, elapsedTime} = this.state
+      let isWin = allMatches
+      let gameStats = {isWin, misses, matches, elapsedTime}
+      console.log(gameStats);
+      this.setState({gameStats})
+
     }
   }
   startTimer() {
@@ -44,7 +44,7 @@ export default class Board extends React.Component {
         if (this.state.elapsedTime >= this.state.maxTime ) this.setState({canClick: false, gameEnded: true})
         else this.setState({elapsedTime: this.state.elapsedTime +1, gameStarted: true})
       }
-    }, 1000)
+    }, 2000)
   }
   shuffle(input) {
     for (var i = input.length-1; i >=0; i--) {
@@ -82,7 +82,8 @@ export default class Board extends React.Component {
   clickCard(card) {
     let {tempRevealed, canClick, revealed,gameStarted} = this.state
     if (!gameStarted) this.startTimer()
-    if (!canClick || tempRevealed.indexOf(card) != -1 || revealed.indexOf(card) != -1) return
+    if (!canClick || tempRevealed.indexOf(card) != -1 || revealed.indexOf(card) != -1)
+    return
     tempRevealed.push(card)
     this.checkTwoTemporaryCards(tempRevealed)
   }
@@ -100,10 +101,11 @@ export default class Board extends React.Component {
         {!gameEnded &&
           <div>
             <Clock elapsedTime={elapsedTime}/>
-            <h4>{!canClick ? "Hold On" : "Go!"}</h4>
+            <h4>{!canClick ? "Wait for it!" : "Choose your card!"}</h4>
             <h1>matches: {matches} misses: {misses}</h1>
           </div>
         }
+        <div className='game-board'>
         {!gameEnded &&
           <div className="board">
             {cards.map((card, i) => {
@@ -113,6 +115,8 @@ export default class Board extends React.Component {
 
           </div>
         }
+      </div>
+        <h1>matches: {matches} misses: {misses}</h1>
         {gameEnded == true && <h1>Game over </h1>}
         {gameEnded && <Win gameStats={gameStats} />}
       </div>

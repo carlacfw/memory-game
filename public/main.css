@@ -1,29 +1,42 @@
 .board {
   display: flex;
-  flex-wrap: wrap;
-  border-style: solid;
-  width: 890px;
-  height: 680px;
-  align-items: center;
-
+ flex-flow: wrap;
+ border-style: solid;
+ border: white;
+ width: 850px;
+ height: 650px;
+ align-content: center;
+ justify-content:center;
+ margin: 0 auto;
+ background: #f9ccac;
+ box-shadow: 5px 5px 5px #f4a688;
   }
 
 .card {
   width: 200px;
   height: 200px;
   border-radius: 5px;
-  border: black;
+  border: white;
   border-style: solid;
-  /*margin-left: 10px;*/
   text-align: center;
   font-size: 30px;
-  align-self: center;
+  align-items: center;
+  background: #f4a688;
+  box-shadow: 7px 7px 7px  #e0876a;
 
 
 }
 .clock {
   font-size: 50px;
+
 }
 .home-page {
   align-items: center;
+}
+body {
+  text-align: center;
+  font-family: 'Inconsolata', monospace;
+}
+.won {
+
 }

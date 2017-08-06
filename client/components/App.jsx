@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import Rules from './Rules'
 import Board from './Board'
 import Clock from './Clock'
+import Win from './Win'
 
 class App extends React.Component {
   constructor(props) {
@@ -25,8 +26,8 @@ class App extends React.Component {
       <Router>
         <div className='routes'>
           <Route exact path='/' component={Rules}/>
-          <Route exact path='/board' component={(props) => <Board gameEnd={this.gameEnd.bind(this)} {...props} /> }/>
-          <Route exact path="/win" component={(props) => <Win  winStats={this.state.winStats}{...props}/> } />
+          <Route exact path='/board' component={Board}/>
+          <Route exact path="/win" component={(props) => <Win  state={this.state}{...props}/> } />
           <Link to='/'>Home</Link>
         </div>
       </Router>
