@@ -16,7 +16,7 @@ export default class Board extends React.Component {
       tempRevealed: [],
       canClick: true,
       elapsedTime: 0,
-      maxTime: 60,
+      maxTime: 3,
       gameStarted: false,
       gameEnded: false,
       matches: 0,
@@ -37,15 +37,19 @@ export default class Board extends React.Component {
 
     }
   }
+  /*checkWin function takes the revealed array and checks the status of the game
+  if it is allMatches or outOfTime the reason that the game is ended*/
+
   startTimer() {
     setInterval(()=>{
       if (!this.state.gameEnded) {
-
         if (this.state.elapsedTime >= this.state.maxTime ) this.setState({canClick: false, gameEnded: true})
         else this.setState({elapsedTime: this.state.elapsedTime +1, gameStarted: true})
       }
     }, 2000)
   }
+  /**/
+
   shuffle(input) {
     for (var i = input.length-1; i >=0; i--) {
       var randomIndex = Math.floor(Math.random()*(i+1))
@@ -91,6 +95,11 @@ export default class Board extends React.Component {
     let {revealed, tempRevealed} = this.state
     return (revealed.indexOf(card) != -1 || tempRevealed.indexOf(card) != -1)
   }
+
+  /*function refreshPage(){
+    window.parent.location = window.parent.location.href
+  }*/
+
   render() {
     let {cards, revealed, tempRevealed, elapsedTime, canClick, matches, misses, gameEnded, gameStats}  = this.state
     // console.log({tempRevealed, revealed});
@@ -116,9 +125,11 @@ export default class Board extends React.Component {
           </div>
         }
       </div>
+        <div className='game-over'>
         <h1>matches: {matches} misses: {misses}</h1>
-        {gameEnded == true && <h1>Game over </h1>}
+        {gameEnded == true && <h1>Game over</h1>}
         {gameEnded && <Win gameStats={gameStats} />}
+        </div>
       </div>
     )
   }

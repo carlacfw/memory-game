@@ -12,7 +12,8 @@ const App = () => {
         <div className='routes'>
           <Route exact path='/' component={Rules}/>
           <Route exact path='/board' component={Board}/>
-          <Link to='/'>Home</Link>
+
+          <footer><Link to='/'>Home</Link></footer>
         </div>
       </Router>
     </div>

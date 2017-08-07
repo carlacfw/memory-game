@@ -1,3 +1,6 @@
+.title{
+  font-size: 50px;
+}
 .board {
   display: flex;
  flex-flow: wrap;
@@ -8,21 +11,23 @@
  align-content: center;
  justify-content:center;
  margin: 0 auto;
- background: #f9ccac;
- box-shadow: 5px 5px 5px #f4a688;
+ background: #DFE3EE;
+ box-shadow: 5px 5px 5px #DFE3EE;
   }
 
 .card {
   width: 200px;
   height: 200px;
   border-radius: 5px;
-  border: white;
+  border:  #8B9DC3;
   border-style: solid;
   text-align: center;
   font-size: 30px;
   align-items: center;
-  background: #f4a688;
-  box-shadow: 7px 7px 7px  #e0876a;
+  background: #3B5998;
+  box-shadow: 7px 7px 7px #3B5998;
+  font-weight: bolder;
+  color: #F7F7F7;
 
 
 }
@@ -36,7 +41,24 @@
 body {
   text-align: center;
   font-family: 'Inconsolata', monospace;
+  color: #000066;
+  background-color: #F7F7F7;
 }
 .won {
+  color: #FF0000;
+  font-size: 30px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 
+}
+footer{
+  margin-top: 100px;
+  border-top-style: solid;
+  font-size: 30px;
+  padding-top: 50px;
+
+}
+.game-over {
+  font-size: 50px;
+  font-style: oblique;
 }
