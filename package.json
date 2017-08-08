@@ -6,7 +6,7 @@
   "main": "server/index.js",
   "scripts": {
     "postinstall": "webpack",
-    "start": "node server/index",
+    "start": "node server/index.js",
     "dev": "nodemon --watch server server/index & webpack --watch",
     "test": "tape -r babel-register 'test/**/*.test.js' | tap-diff",
     "watch": "nodemon -e js,jsx -x npm test"
@@ -20,7 +20,6 @@
   "author": "carla",
   "license": "ISC",
   "devDependencies": {
-
     "enzyme": "^2.7.0",
     "jsx-loader": "^0.13.2",
     "nodemon": "^1.11.0",
@@ -39,6 +38,7 @@
     "babel-register": "^6.18.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "pg": "^7.1.0",
     "simple-react-button": "^1.3.0",
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"
