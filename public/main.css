@@ -62,3 +62,19 @@ footer{
   font-size: 50px;
   font-style: oblique;
 }
+.rules {
+  display: flex;
+ flex-flow: wrap;
+ border-style: solid;
+ border: white;
+ width: 600px;
+ align-content: center;
+ justify-content:center;
+ margin: 0 auto;
+ background: #DFE3EE;
+ box-shadow: 10px 10px 10px #DFE3EE;
+  font-size: 30px;
+}
+.play a{
+  color: #ff6600;
+}
