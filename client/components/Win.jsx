@@ -22,3 +22,4 @@ export default function (props) {
   )
 
 }
+/*the button don't need any function it only reloads the page*/
