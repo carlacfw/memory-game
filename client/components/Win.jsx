@@ -12,10 +12,11 @@ export default function (props) {
   return (
     <div className='won'>
       {gameStats.isWin ? "You won! " : "Sorry, you lost! "}
-
-        <Button full onClick={() => {console.log('Hey I Worked')}}>
-    Click Me
-</Button>
+    <div className='button'>
+      <Button value='Play again' clickHandler={() => {window.location.reload()}}>
+    Play again!
+      </Button>
+      </div>
 
     </div>
   )

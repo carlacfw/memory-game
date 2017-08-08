@@ -16,7 +16,7 @@ export default class Board extends React.Component {
       tempRevealed: [],
       canClick: true,
       elapsedTime: 0,
-      maxTime: 3,
+      maxTime: 1,
       gameStarted: false,
       gameEnded: false,
       matches: 0,
