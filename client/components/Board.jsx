@@ -32,7 +32,6 @@ export default class Board extends React.Component {
       let {misses, matches, elapsedTime} = this.state
       let isWin = allMatches
       let gameStats = {isWin, misses, matches, elapsedTime}
-      console.log(gameStats);
       this.setState({gameStats})
 
     }
@@ -77,7 +76,6 @@ export default class Board extends React.Component {
     } else {
       this.setState({canClick: false})
       setTimeout(() => {
-        console.log("timeout");
         this.checkWin(revealed)
         this.setState({tempRevealed: [], canClick: true, misses: misses +1})
       }, 2000 )
@@ -103,8 +101,7 @@ export default class Board extends React.Component {
   render() {
     let {cards, revealed, tempRevealed, elapsedTime, canClick, matches, misses, gameEnded, gameStats}  = this.state
     // console.log({tempRevealed, revealed});
-    console.log(gameEnded);
-    console.log({gameStats});
+  
     return (
       <div>
         {!gameEnded &&
