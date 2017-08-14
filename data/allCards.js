@@ -1,3 +1,5 @@
+
+
 const allCards = {
   cards: [
     {
@@ -53,14 +55,14 @@ const allCards = {
     {
       id: 11,
       matchId: 6,
-      text: "''"
+      text: "' '"
     },
     {
       id: 12,
       matchId: 6,
       text: "use it around a word to create a string"
     }
-  ]
+  ]}
 
 
 export default allCards

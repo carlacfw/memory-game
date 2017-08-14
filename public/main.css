@@ -1,0 +1,85 @@
+.title{
+  font-size: 50px;
+}
+.board {
+  display: flex;
+ flex-flow: wrap;
+ border-style: solid;
+ border: white;
+ width: 850px;
+ height: 650px;
+ align-content: center;
+ justify-content:center;
+ margin: 0 auto;
+ background: #DFE3EE;
+ box-shadow: 5px 5px 5px #DFE3EE;
+  }
+
+.card {
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+  border:  #8B9DC3;
+  border-style: solid;
+  text-align: center;
+  font-size: 30px;
+  align-items: center;
+  background: #3B5998;
+  box-shadow: 7px 7px 7px #3B5998;
+  font-weight: bolder;
+  color: #F7F7F7;
+
+
+}
+.clock {
+  font-size: 50px;
+
+}
+.home-page {
+  align-items: center;
+}
+body {
+  text-align: center;
+  font-family: 'Inconsolata', monospace;
+  color: #000066;
+  background-color: #F7F7F7;
+}
+.won {
+  color: #FF0000;
+  font-size: 30px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+}
+footer{
+  margin-top: 100px;
+  border-top-style: solid;
+  font-size: 30px;
+  padding-top: 50px;
+
+}
+.game-over {
+  font-size: 50px;
+  font-style: oblique;
+}
+.rules {
+  display: flex;
+ flex-flow: wrap;
+ border-style: solid;
+ border: white;
+ width: 600px;
+ align-content: center;
+ justify-content:center;
+ margin: 0 auto;
+ background: #DFE3EE;
+ box-shadow: 10px 10px 10px #DFE3EE;
+  font-size: 30px;
+}
+.play a{
+  color: #ff6600;
+}
+.button {
+  font-size: 30px;
+  margin-top: 30px;
+  color: #000066;
+}
